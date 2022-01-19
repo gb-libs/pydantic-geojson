@@ -23,4 +23,3 @@ class GeometryCollectionModel(BaseModel):
             MultiPolygonModel,
         ],
     ]
-

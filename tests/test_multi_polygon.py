@@ -31,12 +31,12 @@ class TestMultiPolygonModel:
         mp_model = MultiPolygonModel(**data)
         coordinates = mp_model.coordinates
 
-        for mp_list_key, mp_list in enumerate(coordinates):
-            for mp_item_key, mp_item in enumerate(mp_list):
-                for mpl_key, mp_coordinate in enumerate(mp_item):
+        for mp_l_key, mp_l in enumerate(coordinates):
+            for mp_i_key, mp_i in enumerate(mp_l):
+                for mpl_key, mp_coordinate in enumerate(mp_i):
                     lon, lat = mp_coordinate.lon, mp_coordinate.lat
-                    assert data['coordinates'][mp_list_key][mp_item_key][
-                               mpl_key] == [lon, lat]
+                    assert data['coordinates'][mp_l_key][mp_i_key][mpl_key] == [
+                        lon, lat]
 
         assert mp_model.type == data['type']
 
