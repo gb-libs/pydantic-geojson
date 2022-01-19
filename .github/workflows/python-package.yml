@@ -37,11 +37,14 @@ jobs:
         python -m pip install poetry
 
     - name: Install library
-      run: poetry install
+      run: |
+        poetry install
+        source .venv/bin/activate
 
     - name: Lint with flake8
       run: |
         flake8 . --count --show-source --statistics
+
     - name: Test with pytest
       run: |
         pytest
