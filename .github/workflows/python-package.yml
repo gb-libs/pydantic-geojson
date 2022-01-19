@@ -39,12 +39,13 @@ jobs:
     - name: Install library
       run: |
         poetry install
-        source .venv/bin/activate
 
     - name: Lint with flake8
       run: |
+        source .venv/bin/activate
         flake8 . --count --show-source --statistics
 
     - name: Test with pytest
       run: |
+        source .venv/bin/activate
         pytest
