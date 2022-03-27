@@ -37,7 +37,7 @@ jobs:
 
       - name: Generate coverage report
         run: |
-          poetry run pytest --cov=marshmallow_geojson --cov-report=xml
+          poetry run pytest --cov=pydantic_geojson --cov-report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
