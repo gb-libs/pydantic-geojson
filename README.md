@@ -1,18 +1,23 @@
+[![GitHub Actions status for master branch](https://github.com/gb-libs/pydantic-geojson/actions/workflows/main.yml/badge.svg)](https://github.com/gb-libs/pydantic-geojson/actions?query=workflow%3A%22Python+package%22)
+[![Latest PyPI package version](https://badge.fury.io/py/pydantic-geojson.svg)](https://pypi.org/project/pydantic-geojson/)
+[![codecov](https://codecov.io/gh/gb-libs/pydantic-geojson/branch/master/graph/badge.svg?token=8LMKSDQTIR)](https://codecov.io/gh/gb-libs/pydantic-geojson)
+[![Downloads](https://static.pepy.tech/personalized-badge/pydantic-geojson?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/pydantic-geojson)
+
 pydantic-geojson 🌍
 ===================
 
 
 | GeoJSON Objects    | Status |
-| -------------------- | -------- |
-| Point              | ✅     |
-| MultiPoint         | ✅     |
-| LineString         | ✅     |
-| MultiLineString    | ✅     |
-| Polygon            | ✅     |
-| MultiPolygon       | ✅     |
-| GeometryCollection | ✅     |
-| Feature            | ✅     |
-| FeatureCollection  | ✅     |
+|--------------------|--------|
+| Point              | ✅      |
+| MultiPoint         | ✅      |
+| LineString         | ✅      |
+| MultiLineString    | ✅      |
+| Polygon            | ✅      |
+| MultiPolygon       | ✅      |
+| GeometryCollection | ✅      |
+| Feature            | ✅      |
+| FeatureCollection  | ✅      |
 
 Installation
 ------------
