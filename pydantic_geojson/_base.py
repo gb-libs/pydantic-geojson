@@ -19,8 +19,8 @@ LonField = Annotated[
     Union[float, int],
     Field(
         title='Coordinate longitude',
-        gte=-180,
-        lte=180,
+        ge=-180,
+        le=180,
     ),
 ]
 
@@ -28,8 +28,8 @@ LatField = Annotated[
     Union[float, int],
     Field(
         title='Coordinate latitude',
-        gte=-90,
-        lte=90,
+        ge=-90,
+        le=90,
     ),
 ]
 
