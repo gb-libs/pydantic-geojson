@@ -41,7 +41,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pydantic = "^1.9.0"
+pydantic = ">=1.9,<3.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.10.1"
