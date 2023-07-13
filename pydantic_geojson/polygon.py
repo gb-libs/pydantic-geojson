@@ -7,6 +7,4 @@ from ._base import Coordinates, PolygonFieldType
 
 class PolygonModel(BaseModel):
     type: str = PolygonFieldType
-    coordinates: List[
-        List[Coordinates]
-    ]
+    coordinates: List[List[Coordinates]]

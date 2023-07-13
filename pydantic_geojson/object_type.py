@@ -4,13 +4,13 @@ from enum import Enum
 https://www.rfc-editor.org/rfc/rfc7946.html#section-1.4
 """
 
-POINT = 'Point'
-MULTI_POINT = 'MultiPoint'
-LINE_STRING = 'LineString'
-MULTI_LINE_STRING = 'MultiLineString'
-POLYGON = 'Polygon'
-MULTI_POLYGON = 'MultiPolygon'
-GEOMETRY_COLLECTION = 'GeometryCollection'
+POINT = "Point"
+MULTI_POINT = "MultiPoint"
+LINE_STRING = "LineString"
+MULTI_LINE_STRING = "MultiLineString"
+POLYGON = "Polygon"
+MULTI_POLYGON = "MultiPolygon"
+GEOMETRY_COLLECTION = "GeometryCollection"
 
 
 class GeometryType(str, Enum):
@@ -20,6 +20,7 @@ class GeometryType(str, Enum):
     "MultiLineString", "Polygon", "MultiPolygon", and
     "GeometryCollection".
     """
+
     point = POINT
     multi_point = MULTI_POINT
     line_string = LINE_STRING
@@ -29,5 +30,5 @@ class GeometryType(str, Enum):
     geometry_collection = GEOMETRY_COLLECTION
 
 
-FEATURE = 'Feature'
-FEATURE_COLLECTION = 'FeatureCollection'
+FEATURE = "Feature"
+FEATURE_COLLECTION = "FeatureCollection"

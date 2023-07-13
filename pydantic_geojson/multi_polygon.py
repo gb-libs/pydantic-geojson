@@ -7,8 +7,4 @@ from ._base import Coordinates, MultiPolygonFieldType
 
 class MultiPolygonModel(BaseModel):
     type: str = MultiPolygonFieldType
-    coordinates: List[
-        List[
-            List[Coordinates]
-        ]
-    ]
+    coordinates: List[List[List[Coordinates]]]
