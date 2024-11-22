@@ -304,6 +304,9 @@ from pydantic_geojson import FeatureModel
 
 data = {
     "type": "Feature",
+    "properties":{
+      "a_property": "a_value"
+    },
     "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -365,4 +368,11 @@ data = {
 >>> FeatureCollectionModel(**data)
 >>> type='FeatureCollection' features=[FeatureModel(type='Feature', geometry=PointModel(type='Point', coordinates=Coordinates(lon=-80.870885, lat=35.215151))), FeatureModel(type='Feature', geometry=PolygonModel(type='Polygon', coordinates=[[Coordinates(lon=-80.724878, lat=35.265454), Coordinates(lon=-80.722646, lat=35.260338), Coordinates(lon=-80.720329, lat=35.260618), Coordinates(lon=-80.704793, lat=35.268397), Coordinates(lon=-80.724878, lat=35.265454)]]))]
 
+```
+
+Testing
+------------
+
+```bash
+poetry run pytest
 ```

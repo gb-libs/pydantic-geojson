@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Any
 
 from pydantic import BaseModel
 
@@ -13,6 +13,7 @@ from .polygon import PolygonModel
 
 class FeatureModel(BaseModel):
     type: str = FeatureFieldType
+    properties: dict[str, Any]
     geometry: Union[
         PointModel,
         MultiPointModel,
