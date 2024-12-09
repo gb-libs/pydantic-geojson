@@ -3,31 +3,31 @@ from pydantic_geojson import object_type
 
 class TestFormatStringType:
     def test_format_string_for_point(self):
-        assert object_type.POINT == 'Point'
+        assert object_type.POINT == "Point"
 
     def test_format_string_for_multi_point(self):
-        assert object_type.MULTI_POINT == 'MultiPoint'
+        assert object_type.MULTI_POINT == "MultiPoint"
 
     def test_format_string_for_line_string(self):
-        assert object_type.LINE_STRING == 'LineString'
+        assert object_type.LINE_STRING == "LineString"
 
     def test_format_string_for_multi_line_string(self):
-        assert object_type.MULTI_LINE_STRING == 'MultiLineString'
+        assert object_type.MULTI_LINE_STRING == "MultiLineString"
 
     def test_format_string_for_polygon(self):
-        assert object_type.POLYGON == 'Polygon'
+        assert object_type.POLYGON == "Polygon"
 
     def test_format_string_for_multi_polygon(self):
-        assert object_type.MULTI_POLYGON == 'MultiPolygon'
+        assert object_type.MULTI_POLYGON == "MultiPolygon"
 
     def test_format_string_for_geometry_collection(self):
-        assert object_type.GEOMETRY_COLLECTION == 'GeometryCollection'
+        assert object_type.GEOMETRY_COLLECTION == "GeometryCollection"
 
     def test_format_string_for_feature(self):
-        assert object_type.FEATURE == 'Feature'
+        assert object_type.FEATURE == "Feature"
 
     def test_format_string_for_feature_collection(self):
-        assert object_type.FEATURE_COLLECTION == 'FeatureCollection'
+        assert object_type.FEATURE_COLLECTION == "FeatureCollection"
 
 
 class TestGeometryType:

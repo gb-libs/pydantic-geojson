@@ -30,7 +30,6 @@ data = {
 
 
 class TestFeatureModel:
-
     def test_geometry_model_type(self):
         f_model = FeatureModel(**data)
         assert f_model.geometry.type == data["geometry"]["type"]
