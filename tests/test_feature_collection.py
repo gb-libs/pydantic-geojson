@@ -6,11 +6,8 @@ data = {
     "features": [
         {
             "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [-80.870885, 35.215151]
-            },
-            "properties": {}
+            "geometry": {"type": "Point", "coordinates": [-80.870885, 35.215151]},
+            "properties": {},
         },
         {
             "type": "Feature",
@@ -22,13 +19,13 @@ data = {
                         [-80.722646, 35.260338],
                         [-80.720329, 35.260618],
                         [-80.704793, 35.268397],
-                        [-80.724878, 35.265454]
+                        [-80.724878, 35.265454],
                     ]
-                ]
+                ],
             },
-            "properties": {}
-        }
-    ]
+            "properties": {},
+        },
+    ],
 }
 
 
@@ -38,9 +35,9 @@ class TestFeatureCollectionModel:
         features = fc_model.features
 
         for fc_key, fc_item in enumerate(features):
-            assert fc_item.type == data['features'][fc_key]['type']
+            assert fc_item.type == data["features"][fc_key]["type"]
 
-        assert fc_model.type == data['type']
+        assert fc_model.type == data["type"]
 
     def test_model_type(self):
         fc_model = FeatureCollectionModel(**data)

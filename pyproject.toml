@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydantic_geojson"
-version = "0.1.1"
+version = "0.2.0"
 description = "Pydantic validation for GeoJson"
 authors = [
   "Aliaksandr Vaskevich <vaskevic.an@gmail.com>",
@@ -31,8 +31,6 @@ classifiers = [
   "Topic :: Scientific/Engineering :: GIS",
   "Intended Audience :: Developers",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: Implementation :: CPython",
@@ -40,17 +38,16 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 pydantic = ">=1.9,<3.0"
-
-[tool.poetry.dev-dependencies]
-isort = "^5.10.1"
-pytest = "^7.1.1"
-pytest-cov = "^4.0.0"
-mypy = "^1.4.1"
 
 [tool.poetry.group.dev.dependencies]
 bandit = "^1.7.5"
+isort = "^5.13.2"
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+mypy = "^1.13.0"
+pre-commit = "^4.0.1"
 
 [build-system]
 requires = ["poetry>=0.12"]

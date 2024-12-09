@@ -1,0 +1,28 @@
+# This workflow will upload a Python Package using poetry when a release is created
+# Note that you must manually update the version number in pyproject.toml before attempting this.
+
+name: Upload Python Package
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Build and publish to pypi
+      uses: JRubics/poetry-publish@v2.0
+      with:
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
