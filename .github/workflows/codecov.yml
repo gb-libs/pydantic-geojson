@@ -16,7 +16,7 @@ jobs:
           python-version: 3.9
 
       - name: Bootstrap poetry
-        run: curl -sL https://install.python-poetry.org | python - -y 3.9
+        run: curl -sL https://install.python-poetry.org | python - -y
 
       - name: Configure poetry
         run: poetry config virtualenvs.in-project true
