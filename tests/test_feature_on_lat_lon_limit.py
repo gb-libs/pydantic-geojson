@@ -1,5 +1,5 @@
-from pydantic import ValidationError
 import pytest
+from pydantic import ValidationError
 from pydantic_geojson import LineStringModel, PointModel, PolygonModel
 
 data_linestring = {

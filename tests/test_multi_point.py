@@ -1,7 +1,7 @@
+import pytest
 from pydantic import ValidationError
 from pydantic_geojson import MultiPointModel
 from pydantic_geojson.object_type import MULTI_POINT
-import pytest
 
 
 @pytest.fixture

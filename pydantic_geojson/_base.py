@@ -33,10 +33,10 @@ LatField = Annotated[
     ),
 ]
 
-PointFieldType = Annotated[Literal[POINT], Field(POINT, title="Point")]
+PointFieldType = Annotated[Literal[POINT], Field(POINT, title="Point")]  # type: ignore
 
 MultiPointFieldType = Annotated[
-    Literal[MULTI_POINT],
+    Literal[MULTI_POINT],  # type: ignore
     Field(
         MULTI_POINT,
         title="Multi Point",
@@ -44,7 +44,7 @@ MultiPointFieldType = Annotated[
 ]
 
 LineStringFieldType = Annotated[
-    Literal[LINE_STRING],
+    Literal[LINE_STRING],  # type: ignore
     Field(
         LINE_STRING,
         title="Line String",
@@ -52,7 +52,7 @@ LineStringFieldType = Annotated[
 ]
 
 MultiLineStringFieldType = Annotated[
-    Literal[MULTI_LINE_STRING],
+    Literal[MULTI_LINE_STRING],  # type: ignore
     Field(
         MULTI_LINE_STRING,
         title="Multi Line String",
@@ -60,7 +60,7 @@ MultiLineStringFieldType = Annotated[
 ]
 
 PolygonFieldType = Annotated[
-    Literal[POLYGON],
+    Literal[POLYGON],  # type: ignore
     Field(
         POLYGON,
         title="Polygon",
@@ -68,7 +68,7 @@ PolygonFieldType = Annotated[
 ]
 
 MultiPolygonFieldType = Annotated[
-    Literal[MULTI_POLYGON],
+    Literal[MULTI_POLYGON],  # type: ignore
     Field(
         MULTI_POLYGON,
         title="Multi Polygon",
@@ -76,7 +76,7 @@ MultiPolygonFieldType = Annotated[
 ]
 
 GeometryCollectionFieldType = Annotated[
-    Literal[GEOMETRY_COLLECTION],
+    Literal[GEOMETRY_COLLECTION],  # type: ignore
     Field(
         GEOMETRY_COLLECTION,
         title="Geometry Collection",
@@ -84,7 +84,7 @@ GeometryCollectionFieldType = Annotated[
 ]
 
 FeatureFieldType = Annotated[
-    Literal[FEATURE],
+    Literal[FEATURE],  # type: ignore
     Field(
         FEATURE,
         title="Feature",
@@ -92,7 +92,7 @@ FeatureFieldType = Annotated[
 ]
 
 FeatureCollectionFieldType = Annotated[
-    Literal[FEATURE_COLLECTION,],
+    Literal[FEATURE_COLLECTION,],  # type: ignore
     Field(
         FEATURE_COLLECTION,
         title="Feature Collection",
@@ -119,6 +119,7 @@ BoundingBox = Annotated[
 
 class GeoJSONModel(BaseModel):
     """Base class for GeoJSON models."""
+
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     type: Union[

@@ -1,7 +1,7 @@
+import pytest
 from pydantic import ValidationError
 from pydantic_geojson import FeatureModel
 from pydantic_geojson.object_type import FEATURE
-import pytest
 
 
 @pytest.fixture()
@@ -76,3 +76,7 @@ class TestFeatureModel:
     def test_invalid_type_not_accepted(self, invalid_feature_wrong_type):
         with pytest.raises(ValidationError) as err:
             FeatureModel(**invalid_feature_wrong_type)
+
+        assert "Input should be 'Feature'" in str(
+            err.value
+        ), "Should error from not having literal Feature"

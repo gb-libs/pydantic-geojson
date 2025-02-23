@@ -1,7 +1,7 @@
+import pytest
 from pydantic import ValidationError
 from pydantic_geojson import LineStringModel
 from pydantic_geojson.object_type import LINE_STRING
-import pytest
 
 
 @pytest.fixture
@@ -47,9 +47,11 @@ class TestLineStringModel:
             LineStringModel(**invalid_linestring_one_coordinate)
 
         assert "too_short" in str(err.value), "Should be a too_short error"
-    
+
     def test_linestring_type(self, invalid_linestring_bad_type):
         with pytest.raises(ValidationError) as err:
             LineStringModel(**invalid_linestring_bad_type)
 
-        assert "Input should be 'LineString' "in str(err.value), "Should error from not having literal LineString"
+        assert "Input should be 'LineString'" in str(
+            err.value
+        ), "Should error from not having literal LineString"

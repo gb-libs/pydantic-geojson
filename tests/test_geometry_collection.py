@@ -1,8 +1,9 @@
+import copy
+
+import pytest
 from pydantic import ValidationError
 from pydantic_geojson import GeometryCollectionModel
 from pydantic_geojson.object_type import GEOMETRY_COLLECTION
-import pytest
-import copy
 
 
 @pytest.fixture

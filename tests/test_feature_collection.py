@@ -1,7 +1,8 @@
+import pytest
 from pydantic import ValidationError
 from pydantic_geojson import FeatureCollectionModel
 from pydantic_geojson.object_type import FEATURE_COLLECTION
-import pytest
+
 
 @pytest.fixture
 def valid_feature_collection_data():
@@ -39,7 +40,10 @@ class TestFeatureCollectionModel:
         features = fc_model.features
 
         for fc_key, fc_item in enumerate(features):
-            assert fc_item.type == valid_feature_collection_data["features"][fc_key]["type"]
+            assert (
+                fc_item.type
+                == valid_feature_collection_data["features"][fc_key]["type"]
+            )
 
         assert fc_model.type == valid_feature_collection_data["type"]
 
