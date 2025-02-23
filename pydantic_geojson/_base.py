@@ -106,6 +106,7 @@ class Coordinates(NamedTuple):
     lat: LatField
 
     def __eq__(self, other):
+        # Note that +180 and -180 are not considered equal here
         return math.isclose(self.lon, other.lon) and math.isclose(self.lat, other.lat)
 
 
