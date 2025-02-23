@@ -1,6 +1,6 @@
 from typing import List, Literal, NamedTuple, Optional, Union
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from typing_extensions import Annotated
 
 from .object_type import (
@@ -119,6 +119,8 @@ BoundingBox = Annotated[
 
 class GeoJSONModel(BaseModel):
     """Base class for GeoJSON models."""
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
     type: Union[
         PointFieldType,
         MultiPointFieldType,
