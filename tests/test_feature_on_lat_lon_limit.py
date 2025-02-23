@@ -1,3 +1,5 @@
+from pydantic import ValidationError
+import pytest
 from pydantic_geojson import LineStringModel, PointModel, PolygonModel
 
 data_linestring = {
@@ -57,29 +59,17 @@ class TestFeatureOnLimit:
         assert p_model.type == data_polygon["type"]
 
     def test_error_in_output_range_lon_min(self):
-        try:
+        with pytest.raises(ValidationError):
             PointModel(**data_point_error_lon_min)
-            assert False
-        except Exception:
-            assert True
 
     def test_error_in_output_range_lat_min(self):
-        try:
+        with pytest.raises(ValidationError):
             PointModel(**data_point_error_lat_min)
-            assert False
-        except Exception:
-            assert True
 
     def test_error_in_output_range_lon_max(self):
-        try:
+        with pytest.raises(ValidationError):
             PointModel(**data_point_error_lon_max)
-            assert False
-        except Exception:
-            assert True
 
     def test_error_in_output_range_lat_max(self):
-        try:
+        with pytest.raises(ValidationError):
             PointModel(**data_point_error_lat_max)
-            assert False
-        except Exception:
-            assert True
