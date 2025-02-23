@@ -222,3 +222,6 @@ artifacts/
 
 # poetry lock file:
 poetry.lock
+
+#VSCode
+.vscode/

@@ -1,8 +1,6 @@
-from pydantic import BaseModel
-
-from ._base import Coordinates, PointFieldType
+from ._base import Coordinates, GeoJSONModel, PointFieldType
 
 
-class PointModel(BaseModel):
-    type: str = PointFieldType
+class PointModel(GeoJSONModel):
+    type: PointFieldType
     coordinates: Coordinates

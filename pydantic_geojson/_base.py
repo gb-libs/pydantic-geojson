@@ -1,6 +1,7 @@
-from typing import NamedTuple, Union
+import math
+from typing import List, Literal, NamedTuple, Optional, Union
 
-from pydantic import Field
+from pydantic import AfterValidator, BaseModel, ConfigDict, Field
 from typing_extensions import Annotated
 
 from .object_type import (
@@ -33,52 +34,124 @@ LatField = Annotated[
     ),
 ]
 
-PointFieldType = Field(
-    POINT,
-    title="Point",
-)
+PointFieldType = Annotated[Literal[POINT], Field(POINT, title="Point")]  # type: ignore
 
-MultiPointFieldType = Field(
-    MULTI_POINT,
-    title="Multi Point",
-)
+MultiPointFieldType = Annotated[
+    Literal[MULTI_POINT],  # type: ignore
+    Field(
+        MULTI_POINT,
+        title="Multi Point",
+    ),
+]
 
-LineStringFieldType = Field(
-    LINE_STRING,
-    title="LineS String",
-)
+LineStringFieldType = Annotated[
+    Literal[LINE_STRING],  # type: ignore
+    Field(
+        LINE_STRING,
+        title="Line String",
+    ),
+]
 
-MultiLineStringFieldType = Field(
-    MULTI_LINE_STRING,
-    title="Multi Line String",
-)
+MultiLineStringFieldType = Annotated[
+    Literal[MULTI_LINE_STRING],  # type: ignore
+    Field(
+        MULTI_LINE_STRING,
+        title="Multi Line String",
+    ),
+]
 
-PolygonFieldType = Field(
-    POLYGON,
-    title="Polygon",
-)
+PolygonFieldType = Annotated[
+    Literal[POLYGON],  # type: ignore
+    Field(
+        POLYGON,
+        title="Polygon",
+    ),
+]
 
-MultiPolygonFieldType = Field(
-    MULTI_POLYGON,
-    title="Multi Polygon",
-)
+MultiPolygonFieldType = Annotated[
+    Literal[MULTI_POLYGON],  # type: ignore
+    Field(
+        MULTI_POLYGON,
+        title="Multi Polygon",
+    ),
+]
 
-GeometryCollectionFieldType = Field(
-    GEOMETRY_COLLECTION,
-    title="Geometry Collection",
-)
+GeometryCollectionFieldType = Annotated[
+    Literal[GEOMETRY_COLLECTION],  # type: ignore
+    Field(
+        GEOMETRY_COLLECTION,
+        title="Geometry Collection",
+    ),
+]
 
-FeatureFieldType = Field(
-    FEATURE,
-    title="Feature",
-)
+FeatureFieldType = Annotated[
+    Literal[FEATURE],  # type: ignore
+    Field(
+        FEATURE,
+        title="Feature",
+    ),
+]
 
-FeatureCollectionFieldType = Field(
-    FEATURE_COLLECTION,
-    title="Feature Collection",
-)
+FeatureCollectionFieldType = Annotated[
+    Literal[FEATURE_COLLECTION,],  # type: ignore
+    Field(
+        FEATURE_COLLECTION,
+        title="Feature Collection",
+    ),
+]
 
 
 class Coordinates(NamedTuple):
     lon: LonField
     lat: LatField
+
+    def __eq__(self, other):
+        # Note that +180 and -180 are not considered equal here
+        return math.isclose(self.lon, other.lon) and math.isclose(self.lat, other.lat)
+
+
+def check_linear_ring(linear_ring: List[Coordinates]) -> List[Coordinates]:
+    if (length := len(linear_ring)) < 4:
+        raise ValueError(f"Linear Ring length must be >=4, not {length}")
+
+    if (start := linear_ring[0]) != (end := linear_ring[-1]):
+        raise ValueError(
+            "Linear Rings must start and end at the same coordinate. "
+            f"Start {start}, End {end}."
+        )
+
+    return linear_ring
+
+
+LinearRing = Annotated[List[Coordinates], AfterValidator(check_linear_ring)]
+
+
+BoundingBox = Annotated[
+    Optional[List[float]],
+    Field(
+        default=None,
+        title="Bounding Box",
+        description="Coordinate range for a GeoJSON Object",
+        min_length=2,  # 1D
+        max_length=6,  # 3D
+    ),
+]
+
+
+class GeoJSONModel(BaseModel):
+    """Base class for GeoJSON models."""
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    type: Union[
+        PointFieldType,
+        MultiPointFieldType,
+        PolygonFieldType,
+        MultiPolygonFieldType,
+        LineStringFieldType,
+        MultiLineStringFieldType,
+        GeometryCollectionFieldType,
+        FeatureFieldType,
+        FeatureCollectionFieldType,
+    ]
+    bbox: BoundingBox

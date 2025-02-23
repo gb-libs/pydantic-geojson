@@ -1,10 +1,8 @@
 from typing import List
 
-from pydantic import BaseModel
-
-from ._base import Coordinates, MultiPolygonFieldType
+from ._base import GeoJSONModel, LinearRing, MultiPolygonFieldType
 
 
-class MultiPolygonModel(BaseModel):
-    type: str = MultiPolygonFieldType
-    coordinates: List[List[List[Coordinates]]]
+class MultiPolygonModel(GeoJSONModel):
+    type: MultiPolygonFieldType
+    coordinates: List[List[LinearRing]]

@@ -1,10 +1,8 @@
 from typing import List
 
-from pydantic import BaseModel
-
-from ._base import Coordinates, MultiLineStringFieldType
+from ._base import Coordinates, GeoJSONModel, MultiLineStringFieldType
 
 
-class MultiLineStringModel(BaseModel):
-    type: str = MultiLineStringFieldType
+class MultiLineStringModel(GeoJSONModel):
+    type: MultiLineStringFieldType
     coordinates: List[List[Coordinates]]
