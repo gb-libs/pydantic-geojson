@@ -7,5 +7,5 @@ from .feature import FeatureModel
 
 
 class FeatureCollectionModel(GeoJSONModel):
-    type: str = FeatureCollectionFieldType
+    type: FeatureCollectionFieldType
     features: List[FeatureModel]
