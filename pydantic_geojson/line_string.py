@@ -1,10 +1,10 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from ._base import Coordinates, GeoJSONModel, LineStringFieldType
 
 
 class LineStringModel(GeoJSONModel):
-    type: str = LineStringFieldType
-    coordinates: List[Coordinates]
+    type: LineStringFieldType
+    coordinates: List[Coordinates] = Field(..., min_length=2)
