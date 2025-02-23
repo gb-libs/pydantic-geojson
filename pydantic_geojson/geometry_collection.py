@@ -2,7 +2,7 @@ from typing import List, Union
 
 from pydantic import BaseModel
 
-from ._base import GeometryCollectionFieldType
+from ._base import GeoJSONModel, GeometryCollectionFieldType
 from .line_string import LineStringModel
 from .multi_line_string import MultiLineStringModel
 from .multi_point import MultiPointModel
@@ -11,7 +11,7 @@ from .point import PointModel
 from .polygon import PolygonModel
 
 
-class GeometryCollectionModel(BaseModel):
+class GeometryCollectionModel(GeoJSONModel):
     type: str = GeometryCollectionFieldType
     geometries: List[
         Union[

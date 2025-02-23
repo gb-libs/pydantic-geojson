@@ -1,6 +1,6 @@
-from typing import NamedTuple, Union
+from typing import List, Literal, NamedTuple, Optional, Union
 
-from pydantic import Field
+from pydantic import BaseModel, Field
 from typing_extensions import Annotated
 
 from .object_type import (
@@ -82,3 +82,19 @@ FeatureCollectionFieldType = Field(
 class Coordinates(NamedTuple):
     lon: LonField
     lat: LatField
+
+
+BoundingBox = Annotated[
+    Optional[List[float]],
+    Field(
+        default=None,
+        title="Bounding Box",
+        description="Coordinate range for a GeoJSON Object",
+        min_length=2,  # 1D
+        max_length=6,  # 3D
+    ),
+]
+
+
+class GeoJSONModel(BaseModel):
+    bbox: BoundingBox
