@@ -6,5 +6,5 @@ from ._base import Coordinates, GeoJSONModel, MultiPointFieldType
 
 
 class MultiPointModel(GeoJSONModel):
-    type: str = MultiPointFieldType
+    type:  MultiPointFieldType
     coordinates: List[Coordinates]
