@@ -6,7 +6,6 @@
 pydantic-geojson 🌍
 ===================
 
-
 | GeoJSON Objects    | Status |
 |--------------------|--------|
 | Point              | ✅      |
@@ -25,13 +24,13 @@ Installation
 pydantic-geojson is compatible with Python 3.7 and up.
 The recommended way to install is via [poetry](https://python-poetry.org/):
 
-```
+```shell
 poetry add pydantic_geojson
 ```
 
 Using pip to install is also possible.
 
-```
+```shell
 pip install pydantic_geojson
 ```
 
@@ -40,7 +39,7 @@ GEOJSON
 
 [GeoJSON](https://geojson.org/) is a format for encoding a variety of geographic data structures.
 
-```
+```json
 {
     "type": "Feature",
     "geometry": {
@@ -63,7 +62,7 @@ Examples of using
 
 Custom properties:
 
-```
+```python
 from pydantic import BaseModel
 from pydantic_geojson import FeatureModel
 
@@ -101,7 +100,7 @@ Point
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import PointModel
 
 data = {
@@ -118,7 +117,7 @@ MultiPoint
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import MultiPointModel
 
 data = {
@@ -138,7 +137,7 @@ LineString
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import LineStringModel
 
 data = {
@@ -160,7 +159,7 @@ MultiLineString
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import MultiLineStringModel
 
 data = {
@@ -196,7 +195,7 @@ Polygon
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import PolygonModel
 
 data = {
@@ -221,7 +220,7 @@ MultiPolygon
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import MultiPolygonModel
 
 data = {
@@ -257,7 +256,7 @@ GeometryCollection
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import GeometryCollectionModel
 
 data = {
@@ -299,7 +298,7 @@ Feature
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import FeatureModel
 
 data = {
@@ -334,7 +333,7 @@ FeatureCollection
 
 Simple example data:
 
-```
+```python
 from pydantic_geojson import FeatureCollectionModel
 
 data = {
@@ -373,6 +372,6 @@ data = {
 Testing
 ------------
 
-```bash
+```shell
 poetry run pytest
 ```
