@@ -23,7 +23,7 @@ data_point_error_lat_max = {"type": "Point", "coordinates": [180, 91]}
 
 data_polygon = {
     "type": "Polygon",
-    "coordinates": [[[-180, 90], [180, 90], [180, -90], [-180, -90], [180, 90]]],
+    "coordinates": [[[-10.0, -10.0], [10.0, -10.0], [10.0, 10.0], [-10.0, -10.0]]],
 }
 
 

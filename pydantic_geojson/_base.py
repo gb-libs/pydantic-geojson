@@ -1,6 +1,7 @@
+import math
 from typing import List, Literal, NamedTuple, Optional, Union
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import AfterValidator, BaseModel, ConfigDict, Field
 from typing_extensions import Annotated
 
 from .object_type import (
@@ -103,6 +104,25 @@ FeatureCollectionFieldType = Annotated[
 class Coordinates(NamedTuple):
     lon: LonField
     lat: LatField
+
+    def __eq__(self, other):
+        return math.isclose(self.lon, other.lon) and math.isclose(self.lat, other.lat)
+
+
+def check_linear_ring(linear_ring: List[Coordinates]) -> List[Coordinates]:
+    if (length := len(linear_ring)) < 4:
+        raise ValueError(f"Linear Ring length must be >=4, not {length}")
+
+    if (start := linear_ring[0]) != (end := linear_ring[-1]):
+        raise ValueError(
+            "Linear Rings must start and end at the same coordinate. "
+            f"Start {start}, End {end}."
+        )
+
+    return linear_ring
+
+
+LinearRing = Annotated[List[Coordinates], AfterValidator(check_linear_ring)]
 
 
 BoundingBox = Annotated[
