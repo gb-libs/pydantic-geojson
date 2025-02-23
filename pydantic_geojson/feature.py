@@ -12,7 +12,7 @@ from .polygon import PolygonModel
 
 
 class FeatureModel(GeoJSONModel):
-    type: str = FeatureFieldType
+    type: FeatureFieldType
     properties: Optional[Dict[str, Any]]
     geometry: Optional[
         Union[

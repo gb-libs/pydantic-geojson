@@ -33,50 +33,71 @@ LatField = Annotated[
     ),
 ]
 
-PointFieldType = Field(
-    POINT,
-    title="Point",
-)
+PointFieldType = Annotated[Literal[POINT], Field(POINT, title="Point")]
 
-MultiPointFieldType = Field(
-    MULTI_POINT,
-    title="Multi Point",
-)
+MultiPointFieldType = Annotated[
+    Literal[MULTI_POINT],
+    Field(
+        MULTI_POINT,
+        title="Multi Point",
+    ),
+]
 
-LineStringFieldType = Field(
-    LINE_STRING,
-    title="LineS String",
-)
+LineStringFieldType = Annotated[
+    Literal[LINE_STRING],
+    Field(
+        LINE_STRING,
+        title="Line String",
+    ),
+]
 
-MultiLineStringFieldType = Field(
-    MULTI_LINE_STRING,
-    title="Multi Line String",
-)
+MultiLineStringFieldType = Annotated[
+    Literal[MULTI_LINE_STRING],
+    Field(
+        MULTI_LINE_STRING,
+        title="Multi Line String",
+    ),
+]
 
-PolygonFieldType = Field(
-    POLYGON,
-    title="Polygon",
-)
+PolygonFieldType = Annotated[
+    Literal[POLYGON],
+    Field(
+        POLYGON,
+        title="Polygon",
+    ),
+]
 
-MultiPolygonFieldType = Field(
-    MULTI_POLYGON,
-    title="Multi Polygon",
-)
+MultiPolygonFieldType = Annotated[
+    Literal[MULTI_POLYGON],
+    Field(
+        MULTI_POLYGON,
+        title="Multi Polygon",
+    ),
+]
 
-GeometryCollectionFieldType = Field(
-    GEOMETRY_COLLECTION,
-    title="Geometry Collection",
-)
+GeometryCollectionFieldType = Annotated[
+    Literal[GEOMETRY_COLLECTION],
+    Field(
+        GEOMETRY_COLLECTION,
+        title="Geometry Collection",
+    ),
+]
 
-FeatureFieldType = Field(
-    FEATURE,
-    title="Feature",
-)
+FeatureFieldType = Annotated[
+    Literal[FEATURE],
+    Field(
+        FEATURE,
+        title="Feature",
+    ),
+]
 
-FeatureCollectionFieldType = Field(
-    FEATURE_COLLECTION,
-    title="Feature Collection",
-)
+FeatureCollectionFieldType = Annotated[
+    Literal[FEATURE_COLLECTION,],
+    Field(
+        FEATURE_COLLECTION,
+        title="Feature Collection",
+    ),
+]
 
 
 class Coordinates(NamedTuple):
@@ -97,4 +118,16 @@ BoundingBox = Annotated[
 
 
 class GeoJSONModel(BaseModel):
+    """Base class for GeoJSON models."""
+    type: Union[
+        PointFieldType,
+        MultiPointFieldType,
+        PolygonFieldType,
+        MultiPolygonFieldType,
+        LineStringFieldType,
+        MultiLineStringFieldType,
+        GeometryCollectionFieldType,
+        FeatureFieldType,
+        FeatureCollectionFieldType,
+    ]
     bbox: BoundingBox
