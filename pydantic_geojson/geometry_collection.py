@@ -13,14 +13,17 @@ from .polygon import PolygonModel
 
 class GeometryCollectionModel(GeoJSONModel):
     type: GeometryCollectionFieldType
-    geometries: List[Union[
-        PointModel,
-        MultiPointModel,
-        LineStringModel,
-        MultiLineStringModel,
-        PolygonModel,
-        MultiPolygonModel,
-        GeometryCollectionModel
-    ]]
+    geometries: List[
+        Union[
+            PointModel,
+            MultiPointModel,
+            LineStringModel,
+            MultiLineStringModel,
+            PolygonModel,
+            MultiPolygonModel,
+            GeometryCollectionModel,
+        ]
+    ]
 
-GeometryCollectionModel.model_rebuild() # Required for recursion 
+
+GeometryCollectionModel.model_rebuild()  # Required for recursion

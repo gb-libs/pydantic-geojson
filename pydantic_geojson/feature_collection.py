@@ -1,6 +1,4 @@
-from typing import List, Union
-
-from pydantic import BaseModel
+from typing import List
 
 from ._base import FeatureCollectionFieldType, GeoJSONModel
 from .feature import FeatureModel

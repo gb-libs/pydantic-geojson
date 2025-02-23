@@ -1,6 +1,6 @@
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from ._base import Coordinates, GeoJSONModel, LineStringFieldType
 

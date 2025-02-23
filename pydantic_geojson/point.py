@@ -1,5 +1,3 @@
-from pydantic import BaseModel
-
 from ._base import Coordinates, GeoJSONModel, PointFieldType
 
 
