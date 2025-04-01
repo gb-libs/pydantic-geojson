@@ -1,8 +1,8 @@
-from typing import Any, Union
+from typing import Any, Dict, Optional, Union
 
-from pydantic import BaseModel
+from pydantic import Field
 
-from ._base import FeatureFieldType
+from ._base import FeatureFieldType, GeoJSONModel
 from .line_string import LineStringModel
 from .multi_line_string import MultiLineStringModel
 from .multi_point import MultiPointModel
@@ -11,14 +11,19 @@ from .point import PointModel
 from .polygon import PolygonModel
 
 
-class FeatureModel(BaseModel):
-    type: str = FeatureFieldType
-    properties: dict[str, Any]
-    geometry: Union[
-        PointModel,
-        MultiPointModel,
-        LineStringModel,
-        MultiLineStringModel,
-        PolygonModel,
-        MultiPolygonModel,
+class FeatureModel(GeoJSONModel):
+    type: FeatureFieldType
+    properties: Optional[Dict[str, Any]]
+    geometry: Optional[
+        Union[
+            PointModel,
+            MultiPointModel,
+            LineStringModel,
+            MultiLineStringModel,
+            PolygonModel,
+            MultiPolygonModel,
+        ]
     ]
+    id: Optional[Union[int, str]] = Field(
+        default=None,
+    )

@@ -1,8 +1,8 @@
+from __future__ import annotations
+
 from typing import List, Union
 
-from pydantic import BaseModel
-
-from ._base import GeometryCollectionFieldType
+from ._base import GeoJSONModel, GeometryCollectionFieldType
 from .line_string import LineStringModel
 from .multi_line_string import MultiLineStringModel
 from .multi_point import MultiPointModel
@@ -11,8 +11,8 @@ from .point import PointModel
 from .polygon import PolygonModel
 
 
-class GeometryCollectionModel(BaseModel):
-    type: str = GeometryCollectionFieldType
+class GeometryCollectionModel(GeoJSONModel):
+    type: GeometryCollectionFieldType
     geometries: List[
         Union[
             PointModel,
@@ -21,5 +21,9 @@ class GeometryCollectionModel(BaseModel):
             MultiLineStringModel,
             PolygonModel,
             MultiPolygonModel,
-        ],
+            GeometryCollectionModel,
+        ]
     ]
+
+
+GeometryCollectionModel.model_rebuild()  # Required for recursion
