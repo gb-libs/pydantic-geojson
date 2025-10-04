@@ -33,7 +33,7 @@ class TestLineStringModel:
         coordinates = ls_model.coordinates
 
         for lsi_key, ls_item in enumerate(coordinates):
-            lon, lat = ls_item
+            lon, lat, _ = ls_item
             assert valid_linestring_data["coordinates"][lsi_key] == [lon, lat]
 
         assert ls_model.type == valid_linestring_data["type"]
