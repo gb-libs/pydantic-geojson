@@ -34,6 +34,13 @@ LatField = Annotated[
     ),
 ]
 
+AltField = Annotated[
+    Union[float, int],
+    Field(
+        title="Coordinate altitude",
+    ),
+]
+
 PointFieldType = Annotated[Literal[POINT], Field(POINT, title="Point")]  # type: ignore
 
 MultiPointFieldType = Annotated[
@@ -104,10 +111,22 @@ FeatureCollectionFieldType = Annotated[
 class Coordinates(NamedTuple):
     lon: LonField
     lat: LatField
+    alt: Optional[AltField] = None
 
     def __eq__(self, other):
-        # Note that +180 and -180 are not considered equal here
-        return math.isclose(self.lon, other.lon) and math.isclose(self.lat, other.lat)
+        # Note that +180 and -180 are not considered equal latitude here
+        lon_equal = math.isclose(self.lon, other.lon)
+        lat_equal = math.isclose(self.lat, other.lat)
+        alt_equal = (
+            self.alt is None
+            and other.alt is None
+            or (
+                self.alt is not None
+                and other.alt is not None
+                and math.isclose(self.alt, other.alt)
+            )
+        )
+        return lon_equal and lat_equal and alt_equal
 
 
 def check_linear_ring(linear_ring: List[Coordinates]) -> List[Coordinates]:
