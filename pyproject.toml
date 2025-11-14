@@ -1,12 +1,14 @@
 [tool.poetry]
 name = "pydantic_geojson"
-version = "0.2.0"
+version = "0.3.0"
 description = "Pydantic validation for GeoJson"
 authors = [
   "Aliaksandr Vaskevich <vaskevic.an@gmail.com>",
 ]
 license = "MIT"
 readme = "README.md"
+packages = [{include = "pydantic_geojson"}]
+exclude = ["tests", "assets"]
 
 homepage = "https://github.com/gb-libs/pydantic-geojson"
 repository = "https://github.com/gb-libs/pydantic-geojson"
@@ -35,6 +37,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "License :: OSI Approved :: MIT License",
 ]
@@ -44,17 +47,85 @@ python = "^3.9"
 pydantic = ">=1.9,<3.0"
 
 [tool.poetry.group.dev.dependencies]
-bandit = "^1.7.5"
-isort = ">=5.13.2,<7.0.0"
-pytest = "^8.3.4"
-pytest-cov = ">=6,<8"
-mypy = "^1.13.0"
-pre-commit = "^4.0.1"
+bandit = "^1.8.6"
+isort = "^6.1.0"
+pytest = "^8.4.2"
+pytest-cov = "^7.0.0"
+mypy = "^1.18.2"
+pre-commit = "^4.3.0"
+ruff = "^0.14.5"
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=2.2.0"]
 build-backend = "poetry.masonry.api"
 
 [tool.isort]
 profile = "hug"
-src_paths = ["isort", "tests"]
+src_paths = ["pydantic_geojson", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=pydantic_geojson",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+strict_equality = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black/ruff formatter
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]  # assert in tests is fine
+
+[tool.ruff.lint.isort]
+known-first-party = ["pydantic_geojson"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "venv"]
+skips = ["B101"]  # skip assert_used check

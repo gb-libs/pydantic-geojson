@@ -217,8 +217,14 @@ artifacts/
 # mypy:
 .mypy_cache/
 
+# ruff:
+.ruff_cache/
+
 # pytest:
 .pytest_cache/
+
+# bandit:
+bandit-report.json
 
 # poetry lock file:
 poetry.lock

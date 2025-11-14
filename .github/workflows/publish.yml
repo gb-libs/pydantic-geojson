@@ -1,28 +1,70 @@
-# This workflow will upload a Python Package using poetry when a release is created
-# Note that you must manually update the version number in pyproject.toml before attempting this.
+# This workflow will build and upload a Python Package to PyPI when a release is created
+# Note: You must manually update the version number in pyproject.toml before creating a release
 
-name: Upload Python Package
+name: Publish to PyPI
 
 on:
   release:
     types: [published]
+  workflow_dispatch:  # Allow manual triggering
 
 permissions:
   contents: read
+  id-token: write  # Required for trusted publishing
 
 jobs:
-  deploy:
+  build-and-publish:
+    name: Build and publish to PyPI
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pydantic-geojson
 
     steps:
-    - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # Fetch all history for version detection
 
-    - name: Set up Python
-      uses: actions/setup-python@v6
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
 
-    - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v2.1
-      with:
-          pypi_token: ${{ secrets.PYPI_TOKEN }}
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: latest
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      - name: Verify version matches release tag
+        run: |
+          VERSION=$(poetry version -s)
+          TAG=${GITHUB_REF#refs/tags/}
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "Error: Version in pyproject.toml ($VERSION) does not match release tag ($TAG)"
+            exit 1
+          fi
+          echo "Version $VERSION matches release tag $TAG"
+
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
+
+      - name: Run tests
+        run: poetry run pytest
+
+      - name: Build package
+        run: poetry build
+
+      - name: Check package contents
+        run: |
+          poetry run pip install twine
+          poetry run twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          print-hash: true
