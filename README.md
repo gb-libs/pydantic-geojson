@@ -66,7 +66,7 @@ print(point)
 <tbody>
 <tr>
 <td><strong>Point</strong><br>A single geographic coordinate</td>
-<td style="text-align: center;"><img src="assets/point.jpg" alt="Point" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/point.jpg" alt="Point" width="150"></td>
 <td>
 
 ```python
@@ -83,7 +83,7 @@ point = PointModel(**data)
 </tr>
 <tr>
 <td><strong>MultiPoint</strong><br>Multiple points</td>
-<td style="text-align: center;"><img src="assets/multi_point.jpg" alt="MultiPoint" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/multi_point.jpg" alt="MultiPoint" width="150"></td>
 <td>
 
 ```python
@@ -103,7 +103,7 @@ multi_point = MultiPointModel(**data)
 </tr>
 <tr>
 <td><strong>LineString</strong><br>A sequence of connected points forming a line</td>
-<td style="text-align: center;"><img src="assets/line_string.jpg" alt="LineString" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/line_string.jpg" alt="LineString" width="150"></td>
 <td>
 
 ```python
@@ -125,7 +125,7 @@ line_string = LineStringModel(**data)
 </tr>
 <tr>
 <td><strong>MultiLineString</strong><br>Multiple line strings</td>
-<td style="text-align: center;"><img src="assets/multi_line_string.jpg" alt="MultiLineString" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/multi_line_string.jpg" alt="MultiLineString" width="150"></td>
 <td>
 
 ```python
@@ -149,7 +149,7 @@ multi_line_string = MultiLineStringModel(**data)
 </tr>
 <tr>
 <td><strong>Polygon</strong><br>A closed area, optionally with holes</td>
-<td style="text-align: center;"><img src="assets/polygon.jpg" alt="Polygon" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/polygon.jpg" alt="Polygon" width="150"></td>
 <td>
 
 ```python
@@ -172,7 +172,7 @@ polygon = PolygonModel(**data)
 </tr>
 <tr>
 <td><strong>MultiPolygon</strong><br>Multiple polygons</td>
-<td style="text-align: center;"><img src="assets/multi_polygon.jpg" alt="MultiPolygon" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/multi_polygon.jpg" alt="MultiPolygon" width="150"></td>
 <td>
 
 ```python
@@ -196,7 +196,7 @@ multi_polygon = MultiPolygonModel(**data)
 </tr>
 <tr>
 <td><strong>GeometryCollection</strong><br>Collection of different geometry types</td>
-<td style="text-align: center;"><img src="assets/geometry_collection.jpg" alt="GeometryCollection" width="150"></td>
+<td style="text-align: center;"><img src="https://raw.githubusercontent.com/gb-libs/pydantic-geojson/master/assets/geometry_collection.jpg" alt="GeometryCollection" width="150"></td>
 <td>
 
 ```python
