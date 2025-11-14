@@ -1,8 +1,12 @@
-from enum import Enum
+"""GeoJSON object type constants and enumeration.
 
+This module defines constants and enumeration for GeoJSON object types
+according to RFC 7946 Section 1.4.
+
+Reference: https://www.rfc-editor.org/rfc/rfc7946.html#section-1.4
 """
-https://www.rfc-editor.org/rfc/rfc7946.html#section-1.4
-"""
+
+from enum import Enum
 
 POINT = "Point"
 MULTI_POINT = "MultiPoint"
@@ -14,11 +18,20 @@ GEOMETRY_COLLECTION = "GeometryCollection"
 
 
 class GeometryType(str, Enum):
-    """
-    Inside this document, the term "geometry type" refers to seven
+    """Enumeration of valid GeoJSON geometry types.
+
+    According to RFC 7946, the term "geometry type" refers to seven
     case-sensitive strings: "Point", "MultiPoint", "LineString",
-    "MultiLineString", "Polygon", "MultiPolygon", and
-    "GeometryCollection".
+    "MultiLineString", "Polygon", "MultiPolygon", and "GeometryCollection".
+
+    Attributes:
+        point: Point geometry type.
+        multi_point: MultiPoint geometry type.
+        line_string: LineString geometry type.
+        multi_line_string: MultiLineString geometry type.
+        polygon: Polygon geometry type.
+        multi_polygon: MultiPolygon geometry type.
+        geometry_collection: GeometryCollection geometry type.
     """
 
     point = POINT
