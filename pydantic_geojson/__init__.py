@@ -28,7 +28,7 @@ from .object_type import GeometryType
 from .point import PointModel
 from .polygon import PolygonModel
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 __author__ = "Aliaksandr Vaskevich"
 __maintainer__ = __author__
 
