@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydantic_geojson"
-version = "0.3.1"
+version = "0.3.2"
 description = "Pydantic validation for GeoJson"
 authors = [
   "Aliaksandr Vaskevich <vaskevic.an@gmail.com>",
@@ -48,20 +48,15 @@ pydantic = ">=1.9,<3.0"
 
 [tool.poetry.group.dev.dependencies]
 bandit = "^1.8.6"
-isort = "^6.1.0"
 pytest = "^8.4.2"
 pytest-cov = "^7.0.0"
-mypy = "^1.18.2"
+mypy = "^1.19.1"
 pre-commit = "^4.3.0"
-ruff = ">=0.14.5,<0.16.0"
+ruff = ">=0.15.4,<0.17.0"
 
 [build-system]
 requires = ["poetry>=2.2.0"]
 build-backend = "poetry.masonry.api"
-
-[tool.isort]
-profile = "hug"
-src_paths = ["pydantic_geojson", "tests"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

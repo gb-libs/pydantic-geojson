@@ -105,9 +105,6 @@ jobs:
       - name: Run ruff format check
         run: poetry run ruff format --check .
 
-      - name: Run isort check
-        run: poetry run isort --check-only .
-
       - name: Run mypy
         run: poetry run mypy pydantic_geojson
 
