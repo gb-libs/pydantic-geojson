@@ -12,25 +12,19 @@ repos:
       - id: debug-statements
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.2
+    rev: v1.19.1
     hooks:
       - id: mypy
         pass_filenames: true
 
   - repo: https://github.com/python-poetry/poetry
-    rev: '2.2.1'
+    rev: '2.3.2'
     hooks:
       - id: poetry-check
       - id: poetry-lock
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.5
+    rev: v0.15.4
     hooks:
       - id: ruff
       - id: ruff-format
-
-  - repo: https://github.com/pycqa/isort
-    rev: 7.0.0
-    hooks:
-      - id: isort
-        name: isort (python)
