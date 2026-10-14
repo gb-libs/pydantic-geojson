@@ -52,7 +52,7 @@ pytest = "^8.4.2"
 pytest-cov = "^7.0.0"
 mypy = "^1.19.1"
 pre-commit = "^4.3.0"
-ruff = ">=0.15.4,<0.17.0"
+ruff = ">=0.15.4,<0.18.0"
 
 [build-system]
 requires = ["poetry>=2.2.0"]
